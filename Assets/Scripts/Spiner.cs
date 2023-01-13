@@ -48,7 +48,7 @@ public class Spiner : MonoBehaviour
     // TODO:tick–³‚­‚¹‚»‚¤
     public void Tick()
     {
-        Debug.Log(gameObject.name + ", " + _currentHP.Value);
+        //Debug.Log(gameObject.name + ", " + _currentHP.Value);
         float rot = MyMath.GetAim(Vector2.zero, inputedDir);
         _attack.transform.localRotation = Quaternion.Euler(Vector3.forward * rot);
     }

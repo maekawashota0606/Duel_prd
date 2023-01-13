@@ -11,6 +11,8 @@ public class UIPresenter : MonoBehaviour
     private Image _lifeGauge2P = null;
     [SerializeField]
     private Arrow _arrow1P = null;
+    [SerializeField]
+    private Arrow _arrow2P = null;
     //
     private event System.Action _drawUI;
 
@@ -48,11 +50,13 @@ public class UIPresenter : MonoBehaviour
             _arrow1P.Stretch(spiner1.gameObject.transform.position, spiner1.inputedDir);
 
             // 2P
+            _arrow2P.Stretch(spiner2.gameObject.transform.position, spiner2.inputedDir);
         };
     }
 
     public void Tick()
     {
-        _drawUI();
+        if(_drawUI != null)
+            _drawUI();
     }
 }
