@@ -16,8 +16,6 @@ public class Player : PlayerBase
     {
         if (context.action.name != "Avoid")
             return;
-
-        Debug.Log("avoid");
         _input.avoid = context.performed;
     }
 

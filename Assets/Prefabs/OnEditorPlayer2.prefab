@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 788421254999438319}
   - component: {fileID: 788421254999438288}
   m_Layer: 0
-  m_Name: Player
+  m_Name: OnEditorPlayer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 6191f166c5fe82046b2cb5933b34a418, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 9f05d421504b5a44faddad6aa4c7a3c8, type: 3}
   m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_ActionId: 55f40fe9-c9a0-4892-aa18-989667cc5ae0
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

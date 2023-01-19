@@ -24,4 +24,13 @@ public class MyMath
 
         return pos;
     }
+
+    public static Vector2 GetRandomVector2()
+    {
+        float x = Random.Range(0.1f, 1f);
+        float y = Random.Range(0.1f, 1f);
+        Vector2 move = new Vector2(x, y);
+
+        return move.normalized;
+    }
 }

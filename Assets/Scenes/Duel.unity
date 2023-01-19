@@ -261,6 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea74531f2cfe525419fe867b39977a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onEditorPlayer1: {fileID: 788421254999438319, guid: d1fb97199c772ea44866f75060f97e36, type: 3}
+  _onEditorPlayer2: {fileID: 788421254999438319, guid: 1c0c2ca0f6b76354d8d379664e984f8a, type: 3}
   _spiner1: {fileID: 340696507}
   _spiner2: {fileID: 689904367}
   _UIPresenter: {fileID: 1014509212}
