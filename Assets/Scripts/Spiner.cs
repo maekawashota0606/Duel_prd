@@ -52,10 +52,9 @@ public class Spiner : MonoBehaviour
         });
     }
 
-    public void SetUpToNextRound(Vector3 pos)
+    public void SetUpToNextRound()
     {
         // ‘Ì—Í‚ÍˆøŒp‚¬
-        transform.position = pos;
         _rb2D.velocity = Vector3.zero;
         _attackedCount = 0;
         _avoidedCount = 0;
@@ -97,6 +96,11 @@ public class Spiner : MonoBehaviour
             SetVelocity(dir);
             _avoidedCount++;
         }
+    }
+
+    public void OnEnded(bool winner = false)
+    {
+        _inputedDir.Value = Vector3.zero;
     }
 
     private void HitWall()

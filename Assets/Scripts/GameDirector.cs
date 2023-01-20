@@ -27,12 +27,10 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     public GameState _enumGameState { get => _gameState.Value; private set => _gameState.Value = value; }
     public readonly ReactiveProperty<GameState> _gameState = new();
     public IObservable<GameState> gameStateChanged => _gameState;
-    //
-    private const float defSpinersPosX = -4; 
-    private const float defSpinersPosY = -4; 
+
     async void Start()
     {
-#if UNITY_EDITOR
+#if !UNITY_EDITOR
         // キーボード1台ではマルチ扱いにならない？
         _playerInput[0] = Instantiate(_onEditorPlayer1).GetComponent<Player>();
         _playerInput[1] = Instantiate(_onEditorPlayer2).GetComponent<Player>();
@@ -134,10 +132,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         if (_gameState.Value != GameState.fighting)
             return;
 
-        Vector3 setPos1 = new Vector3(defSpinersPosX, defSpinersPosY);
-        Vector3 setPos2 = setPos1 * -1;
-        _spiner1.SetUpToNextRound(setPos1);
-        _spiner2.SetUpToNextRound(setPos2);
+        _spiner1.SetUpToNextRound();
+        _spiner2.SetUpToNextRound();
         _gameState.Value = GameState.waiting;
     }
 
@@ -148,6 +144,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         else
             Debug.Log("2p");
 
+        _spiner1.OnEnded();
+        _spiner2.OnEnded();
         _gameState.Value = GameState.ended;
     }
 
