@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
+    /*
     [SerializeField]
     private GameObject _1Pwin;
     [SerializeField]
@@ -13,8 +14,15 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     private GameObject _Draw;
 
+    [SerializeField]
+    private GameObject _P1Diamond;
+    [SerializeField]
+    private GameObject _P2Diamond;
+
+    [SerializeField]
     int playerhp1;
     int playerhp2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,28 +35,39 @@ public class ResultManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerhp1 >= playerhp2)
+        if (playerhp1 > playerhp2)
         {
             _1Pwin.SetActive(true);
-        }
-        else if(playerhp1 <= playerhp2)
-        {
-            _2Pwin.SetActive(true);
-        }
-        else if(playerhp1 == playerhp2)
-        {
-            _Draw.SetActive(true);
-        }
-        else
-        {
-            _1Pwin.SetActive(false);
             _2Pwin.SetActive(false);
             _Draw.SetActive(false);
         }
+        else if(playerhp1 < playerhp2)
+        {
+            _1Pwin.SetActive(false);
+            _2Pwin.SetActive(true);
+            _Draw.SetActive(false);
+        }
+        else if(playerhp1 == playerhp2)
+        {
+            _1Pwin.SetActive(false);
+            _2Pwin.SetActive(false);
+            _Draw.SetActive(true);
+        }
+        if (_P1Diamond.GetComponent<P1sentaku>()._1saisen == true
+            && _P2Diamond.GetComponent<P2sentaku>()._2saisen == true)
+        {
+            SceneManager.LoadScene("Result");
+        }
+        else if (_P1Diamond.GetComponent<P1sentaku>()._1kyarasen == true
+            && _P2Diamond.GetComponent<P2sentaku>()._2kyarasen == true)
+        {
+            SceneManager.LoadScene("Result");
+        }
+        else if (_P1Diamond.GetComponent<P1sentaku>()._1title == true
+            && _P2Diamond.GetComponent<P2sentaku>()._2title == true)
+        {
+            SceneManager.LoadScene("Result");
+        }
     }
-
-    public void bo()
-    {
-        SceneManager.LoadScene("Result");
-    }
+    */
 }
