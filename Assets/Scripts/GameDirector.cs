@@ -57,8 +57,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         });
         gameStateChanged.Where(x => x == GameState.fighting).Subscribe(value => 
         {
-            Vector3 move1 = _playerInput[0].GetInput().move;
-            Vector3 move2 = _playerInput[1].GetInput().move;
+            Vector2 move1 = _playerInput[0].GetInput().move;
+            Vector2 move2 = _playerInput[1].GetInput().move;
             if (move1.magnitude < 0.01f)
                 move1 = MyMath.GetRandomVector2();
             if (move2.magnitude < 0.01f)

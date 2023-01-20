@@ -110,6 +110,7 @@ public class Spiner : MonoBehaviour
 
     private void HitSpiner()
     {
+        _rb2D.velocity *= -1;
         _rb2D.velocity *= _spinerParamAsset.onHitSpinerDecelRatio;
     }
 
@@ -117,7 +118,12 @@ public class Spiner : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(_tagParamAsset.wallTag))
             HitWall();
-        else if (collision.gameObject.CompareTag(_tagParamAsset.spinerTag))
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // コマ同士はコリジョンさせず、ベクトルを反転させる
+        if (collision.gameObject.CompareTag(_tagParamAsset.spinerTag))
             HitSpiner();
     }
 }

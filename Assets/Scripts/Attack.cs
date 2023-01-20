@@ -21,7 +21,7 @@ public class Attack : MonoBehaviour
         // XXXこの判定だと多段ヒットせず、出入りを繰り返すことで複数ヒットするため注意
         if(collision.gameObject.CompareTag(_tagParamAsset.spinerTag))
         {
-            collision.gameObject.GetComponent<Spiner>().AddDamage(_spinerParamAsset.power);
+            collision.gameObject.transform.parent.GetComponent<Spiner>().AddDamage(_spinerParamAsset.power);
         }
     }
 }
