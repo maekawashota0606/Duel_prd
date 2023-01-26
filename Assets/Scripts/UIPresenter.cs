@@ -6,6 +6,10 @@ public class UIPresenter : MonoBehaviour
 {
     // UI
     [SerializeField]
+    private Image _1P = null;
+    [SerializeField]
+    private Image _2P = null;
+    [SerializeField]
     private Image _lifeGauge1P = null;
     [SerializeField]
     private Image _lifeGauge2P = null;
@@ -13,10 +17,13 @@ public class UIPresenter : MonoBehaviour
     private Arrow _arrow1P = null;
     [SerializeField]
     private Arrow _arrow2P = null;
+    [SerializeField]
+    private Image _finished = null;
+
     //
     private event System.Action _drawUI;
 
-    public void SetUp(Spiner spiner1, Spiner spiner2)
+    public void SetUp(GameDirector gameDirector, Spiner spiner1, Spiner spiner2)
     {
         // 監視しているものの、結局複数の値が必要
         // カプセル化できず、キレイではない
@@ -41,6 +48,16 @@ public class UIPresenter : MonoBehaviour
         spiner2.maxHPChanged.Subscribe(value =>
         {
             _lifeGauge2P.fillAmount = (float)spiner2.currentHP / spiner2.maxHP;
+        });
+
+        //
+        gameDirector.gameStateChanged.Where(x => x == GameState.ended).Subscribe(value =>
+        {
+            _finished.enabled = true;
+            if (gameDirector.won1P)
+                _2P.color = new Color(0, 0, 0);
+            else
+                _1P.color = new Color(0, 0, 0);
         });
 
         // 雑に毎フレーム回す

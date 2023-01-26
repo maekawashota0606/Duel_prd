@@ -27,10 +27,12 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     public GameState _enumGameState { get => _gameState.Value; private set => _gameState.Value = value; }
     public readonly ReactiveProperty<GameState> _gameState = new();
     public IObservable<GameState> gameStateChanged => _gameState;
+    //
+    public bool won1P = false;
 
     async void Start()
     {
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
         // キーボード1台ではマルチ扱いにならない？
         _playerInput[0] = Instantiate(_onEditorPlayer1).GetComponent<Player>();
         _playerInput[1] = Instantiate(_onEditorPlayer2).GetComponent<Player>();
@@ -43,7 +45,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         // セットアップ
         _spiner1.SetUp();
         _spiner2.SetUp();
-        _UIPresenter.SetUp(_spiner1, _spiner2);
+        _UIPresenter.SetUp(this, _spiner1, _spiner2);
 
         // ステート監視/関数登録
         gameStateChanged.Where(x => x == GameState.waiting).Subscribe(value => _tick = OnWaiting);
@@ -139,10 +141,11 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
 
     public void OnSpinerDowned(Spiner spiner)
     {
+        // 勝敗判定
         if (spiner == _spiner1)
-            Debug.Log("1p");
+            won1P = false;
         else
-            Debug.Log("2p");
+            won1P = true;
 
         _spiner1.OnEnded();
         _spiner2.OnEnded();

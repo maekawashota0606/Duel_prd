@@ -100,6 +100,7 @@ public class Spiner : MonoBehaviour
 
     public void OnEnded(bool winner = false)
     {
+        _rb2D.velocity = Vector3.zero;
         _inputedDir.Value = Vector3.zero;
     }
 
