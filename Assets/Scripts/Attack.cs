@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Attack : MonoBehaviour
 {
@@ -10,18 +11,27 @@ public class Attack : MonoBehaviour
     private SpinerParamAsset _spinerParamAsset = null;
     [SerializeField]
     private Animator _spinerAnimator = null;
+    //
+    private List<Spiner> _hitedSpiners = new List<Spiner>(10);
 
     public void Fire()
     {
+        _hitedSpiners.Clear();
         _spinerAnimator.SetTrigger(_animTagParamAsset.attackTag);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // XXX‚±‚Ì”»’è‚¾‚Æ‘½’iƒqƒbƒg‚¹‚¸Ao“ü‚è‚ğŒJ‚è•Ô‚·‚±‚Æ‚Å•¡”ƒqƒbƒg‚·‚é‚½‚ß’ˆÓ
         if(collision.gameObject.CompareTag(_tagParamAsset.spinerTag))
         {
-            collision.gameObject.transform.parent.GetComponent<Spiner>().AddDamage(_spinerParamAsset.power);
+            Spiner spiner = collision.gameObject.transform.parent.GetComponent<Spiner>();
+
+            // ‘½’iƒqƒbƒg–h~
+            if (!_hitedSpiners.Contains(spiner))
+            {
+                spiner.AddDamage(_spinerParamAsset.power);
+                _hitedSpiners.Add(spiner);
+            }
         }
     }
 }
