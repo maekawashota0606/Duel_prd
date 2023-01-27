@@ -29,7 +29,7 @@ public class P2sentaku : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3))//Ç±Ç±èCê≥
         {
             if(_sentakukekka2 == 1)
             {
@@ -50,7 +50,7 @@ public class P2sentaku : MonoBehaviour
                 _sentakukekka2--;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button0))//Ç±Ç±èCê≥
         {
             if (_sentakukekka2 == 3)
             {
@@ -71,7 +71,7 @@ public class P2sentaku : MonoBehaviour
                 _sentakukekka2++;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.Return))//Ç±Ç±èCê≥
         {
             if (_sentakukekka2 == 1)
             {

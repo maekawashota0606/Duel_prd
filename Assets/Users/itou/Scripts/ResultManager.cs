@@ -41,21 +41,21 @@ public class ResultManager : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-           if (playerhp1 > playerhp2 && 0 >= playerhp2)
+           if (playerhp1 > playerhp2 && 0 >= playerhp2)//Ç±Ç±èCê≥
            {
                _canvas.SetActive(true);
                _1Pwin.SetActive(true);
                _2Pwin.SetActive(false);
                _Draw.SetActive(false);
            }
-           else if (playerhp1 < playerhp2 && 0 >= playerhp1)
+           else if (playerhp1 < playerhp2 && 0 >= playerhp1)//Ç±Ç±èCê≥
            {
                _canvas.SetActive(true);
                _1Pwin.SetActive(false);
                _2Pwin.SetActive(true);
                _Draw.SetActive(false);
            }
-           else if (playerhp1 == playerhp2 && playerhp2 == 0)
+           else if (playerhp1 == playerhp2 && playerhp2 == 0)//Ç±Ç±èCê≥
            {
                _canvas.SetActive(true);
                _1Pwin.SetActive(false);

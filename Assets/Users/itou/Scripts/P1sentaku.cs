@@ -29,7 +29,7 @@ public class P1sentaku : MonoBehaviour
    void Update()
    {
        /*
-       if (Input.GetKeyDown(KeyCode.JoystickButton3))
+       if (Input.GetKeyDown(KeyCode.JoystickButton3))//Ç±Ç±èCê≥
        {
            if(_sentakukekka1 == 1)
            {
@@ -50,7 +50,7 @@ public class P1sentaku : MonoBehaviour
                _sentakukekka1--;
            }
        }
-       else if (Input.GetKeyDown(KeyCode.JoystickButton0))
+       else if (Input.GetKeyDown(KeyCode.JoystickButton0))//Ç±Ç±èCê≥
        {
            if (_sentakukekka1 == 3)
            {
@@ -71,7 +71,7 @@ public class P1sentaku : MonoBehaviour
                _sentakukekka1++;
            }
        }
-       else if (Input.GetKeyDown(KeyCode.Return))
+       else if (Input.GetKeyDown(KeyCode.Return))//Ç±Ç±èCê≥
        {
            if (_sentakukekka1 == 1)
            {
