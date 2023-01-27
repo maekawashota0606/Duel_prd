@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+ キーコードなどを今の設定に書き換えコメントアウトを解除
+ */
 public class ResultManager : MonoBehaviour
 {
     /*
