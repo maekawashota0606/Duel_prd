@@ -132,7 +132,7 @@ public class EnhanceScrollView : MonoBehaviour
         // set the center item with startCenterIndex
         if (startCenterIndex < 0 || startCenterIndex >= count)
         {
-            Debug.LogError("## startCenterIndex < 0 || startCenterIndex >= listEnhanceItems.Count  out of index ##");
+            //Debug.LogError("## startCenterIndex < 0 || startCenterIndex >= listEnhanceItems.Count  out of index ##");
             startCenterIndex = mCenterIndex;
         }
 
