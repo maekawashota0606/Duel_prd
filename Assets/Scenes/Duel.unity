@@ -1212,16 +1212,36 @@ PrefabInstance:
       value: Spiner2P
       objectReference: {fileID: 0}
     - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d6361ba92e424944088f90004c9ae47d, type: 3}
+    - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
       propertyPath: m_Color.b
-      value: 0.9339623
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
       propertyPath: m_Color.g
-      value: 0.34798482
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
       propertyPath: m_Color.r
-      value: 0.2511125
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4d310529217f5045b62495ab29441f1, type: 3}
@@ -2586,6 +2606,38 @@ PrefabInstance:
     - target: {fileID: 2363535804973018451, guid: f4d310529217f5045b62495ab29441f1, type: 3}
       propertyPath: m_Name
       value: Spiner1P
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d4e3b09ab258e0b4d89c2618d853e689, type: 3}
+    - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966594, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363535805406966605, guid: f4d310529217f5045b62495ab29441f1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4d310529217f5045b62495ab29441f1, type: 3}
