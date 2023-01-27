@@ -20,3 +20,4 @@ MonoBehaviour:
   onHitWallDecelRatio: 0.95
   onHitSpinerDecelRatio: 0.98
   onDamagedDecelRatio: 0.65
+  minSpeed: 5
