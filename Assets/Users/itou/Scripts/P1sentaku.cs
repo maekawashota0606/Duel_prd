@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- キーコードなどを今の設定に書き換えコメントアウトを解除
+KeyCodeの部分などを今の設定に書き換えコメントアウトを解除
  */
 public class P1sentaku : MonoBehaviour
 {
