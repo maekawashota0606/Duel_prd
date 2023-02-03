@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class EnhanceScrollView : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class EnhanceScrollView : MonoBehaviour
         NGUIAndWorldInput, // use EnhanceScrollViewDragController.cs to get the input(keyboard and touch)
         UGUIInput,         // use UDragEnhanceView for each item to get drag event
     }
+    [SerializeField] Sprite image1;
+    [SerializeField] Sprite image2;
+    [SerializeField] Image P1BackGround;
+    [SerializeField] Image P2BackGround;
+    [SerializeField] GameObject P1Ready;
+    [SerializeField] GameObject P2Ready;
 
     // Input system type(NGUI or 3d world, UGUI)
     public InputSystemType inputType = InputSystemType.NGUIAndWorldInput;
@@ -56,6 +63,18 @@ public class EnhanceScrollView : MonoBehaviour
     public Camera sourceCamera;
     private EnhanceScrollViewDragController dragController;
 
+    [SerializeField] 
+    public int P1Index = 1;
+    [SerializeField]
+    public int P2Index = 1;
+    [SerializeField]
+    public int IndexMax = 2;
+    [SerializeField]
+    public int IndexMin = 1;
+
+    private bool P1Conclusion = false;
+    private bool P2Conclusion = false;
+    
     public void EnableDrag(bool isEnabled)
     {
         if (isEnabled)
@@ -100,6 +119,9 @@ public class EnhanceScrollView : MonoBehaviour
 
     void Start()
     {
+        P1Conclusion = false;
+        P2Conclusion = false;
+        
         canChangeItem = true;
         int count = listEnhanceItems.Count;
         dFactor = (Mathf.RoundToInt((1f / count) * 10000f)) * 0.0001f;
@@ -191,6 +213,7 @@ public class EnhanceScrollView : MonoBehaviour
     {
         if (enableLerpTween)
             TweenViewToTarget();
+        
     }
 
     private void TweenViewToTarget()
@@ -282,25 +305,134 @@ public class EnhanceScrollView : MonoBehaviour
     }
 
     // Click the right button to select the next item.
-    public void OnBtnRightClick()
+    public void OnBtnP1RightClick()
     {
-        if (!canChangeItem)
-            return;
-        int targetIndex = curCenterItem.CurveOffSetIndex + 1;
-        if (targetIndex > listEnhanceItems.Count - 1)
-            targetIndex = 0;
-        SetHorizontalTargetItemIndex(listEnhanceItems[targetIndex]);
-    }
+        if (P1Conclusion == false)
+        {
+            if (!canChangeItem)
+                return;
 
-    // Click the left button the select next next item.
-    public void OnBtnLeftClick()
+            P1Index++;
+            if (P1Index > IndexMax)
+            {
+                P1Index = IndexMin;
+            }
+
+            int targetIndex = curCenterItem.CurveOffSetIndex + 1;
+            if (targetIndex > listEnhanceItems.Count - 1)
+                targetIndex = 0;
+            SetHorizontalTargetItemIndex(listEnhanceItems[targetIndex]);
+
+            if (P1Index == 1)
+            {
+                P1BackGround.sprite = image1;
+            }
+            else if (P1Index == 2)
+            {
+                P1BackGround.sprite = image2;
+            }
+        }
+    }
+    public void OnBtnP1LeftClick()
     {
-        if (!canChangeItem)
-            return;
-        int targetIndex = curCenterItem.CurveOffSetIndex - 1;
-        if (targetIndex < 0)
-            targetIndex = listEnhanceItems.Count - 1;
-        SetHorizontalTargetItemIndex(listEnhanceItems[targetIndex]);
+        if (P1Conclusion == false)
+        {
+            if (!canChangeItem)
+                return;
+
+            P1Index--;
+            if (P1Index < IndexMin)
+            {
+                P1Index = IndexMax;
+            }
+
+            int targetIndex = curCenterItem.CurveOffSetIndex - 1;
+            if (targetIndex < 0)
+                targetIndex = listEnhanceItems.Count - 1;
+            SetHorizontalTargetItemIndex(listEnhanceItems[targetIndex]);
+
+            if (P1Index == 1)
+            {
+                P1BackGround.sprite = image1;
+            }
+            else if (P1Index == 2)
+            {
+                P1BackGround.sprite = image2;
+            }
+        }
+    }
+    
+    public void OnBtnP2RightClick()
+    {
+        if (P2Conclusion == false)
+        {
+            if (!canChangeItem)
+                return;
+
+            P2Index++;
+            if (P2Index > IndexMax)
+            {
+                P2Index = IndexMin;
+            }
+
+            int targetIndex = curCenterItem.CurveOffSetIndex + 1;
+            if (targetIndex > listEnhanceItems.Count - 1)
+                targetIndex = 0;
+            SetHorizontalTargetItemIndex(listEnhanceItems[targetIndex]);
+
+            if (P2Index == 1)
+            {
+                P2BackGround.sprite = image1;
+            }
+            else if (P2Index == 2)
+            {
+                P2BackGround.sprite = image2;
+            }
+        }
+    } 
+    public void OnBtnP2LeftClick()
+    {
+        if (P2Conclusion == false)
+        {
+            if (!canChangeItem)
+                return;
+
+            P2Index--;
+            if (P2Index < IndexMin)
+            {
+                P2Index = IndexMax;
+            }
+
+            int targetIndex = curCenterItem.CurveOffSetIndex - 1;
+            if (targetIndex < 0)
+                targetIndex = listEnhanceItems.Count - 1;
+            SetHorizontalTargetItemIndex(listEnhanceItems[targetIndex]);
+
+            if (P2Index == 1)
+            {
+                P2BackGround.sprite = image1;
+            }
+            else if (P2Index == 2)
+            {
+                P2BackGround.sprite = image2;
+            }
+        }
+    }
+    
+    /// <summary>
+    /// ここでP1、P2のIndexを取り出せます。
+    /// </summary>
+    public void OnBtnP1Conclusion()
+    {
+        P1Ready.SetActive(true);
+        Debug.Log(P1Index);
+        P1Conclusion = true;
+    }
+    public void OnBtnP2Conclusion()
+    {
+        P2Ready.SetActive(true);
+        Debug.Log(P2Index);
+        P2Conclusion = true;
     }
 
     public float factor = 0.001f;
@@ -314,7 +446,7 @@ public class EnhanceScrollView : MonoBehaviour
             LerpTweenToTarget(0.0f, curHorizontalValue, false);
         }
     }
-
+    
     // On Drag End
     public void OnDragEnhanceViewEnd()
     {
