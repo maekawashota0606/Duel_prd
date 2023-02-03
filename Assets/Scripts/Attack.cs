@@ -33,6 +33,8 @@ public class Attack : MonoBehaviour
             if (spinerList.Contains(collision.gameObject))
             {
                 collision.gameObject.GetComponent<Spiner>().AddDamage(_spinerParamAsset.power);
+                
+                collision.gameObject.GetComponent<Chara>().Start_Move();
 
                 spinerList.Remove(collision.gameObject);
             }
