@@ -11,6 +11,8 @@ public class Attack : MonoBehaviour
     private SpinerParamAsset _spinerParamAsset = null;
     [SerializeField]
     private Animator _spinerAnimator = null;
+    [SerializeField]
+    private Animator _spinerDamageAnimator = null;
     //
     private List<Spiner> _hitedSpiners = new List<Spiner>(10);
 
@@ -33,6 +35,8 @@ public class Attack : MonoBehaviour
             {
                 spiner.AddDamage(_spinerParamAsset.power);
                 _hitedSpiners.Add(spiner);
+
+                _spinerDamageAnimator.SetTrigger(_animTagParamAsset.attackTag);
             }
         }
     }

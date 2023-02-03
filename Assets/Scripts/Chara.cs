@@ -6,7 +6,7 @@ public class Chara : MonoBehaviour
 {
     [SerializeField] GameObject _chara;
 
-    private int move_count = 10;
+    private int move_count = 3;
     private int count = 0;
     private float wait_time = 1.0f;
     private float time = 0.0f;
@@ -30,6 +30,7 @@ public class Chara : MonoBehaviour
                 if(count >= move_count)
                 {
                     damage = false;
+                    pos.x = 0;
                 }
             }
         }
