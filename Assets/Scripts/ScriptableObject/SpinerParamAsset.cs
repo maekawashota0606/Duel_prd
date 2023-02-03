@@ -11,4 +11,5 @@ public class SpinerParamAsset : ScriptableObject
     public float onHitWallDecelRatio;
     public float onHitSpinerDecelRatio;
     public float onDamagedDecelRatio;
+    public float minSpeed;
 }

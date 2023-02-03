@@ -11,15 +11,12 @@ public class Attack : MonoBehaviour
     private SpinerParamAsset _spinerParamAsset = null;
     [SerializeField]
     private Animator _spinerAnimator = null;
-    [SerializeField]
-    GameObject _spiner1P = null;
-    [SerializeField]
-    GameObject _spiner2P = null;
-
-    List<GameObject> spinerList = null;
+    //
+    private List<Spiner> _hitedSpiners = new List<Spiner>(10);
 
     public void Fire()
     {
+        _hitedSpiners.Clear();
         _spinerAnimator.SetTrigger(_animTagParamAsset.attackTag);
 
         spinerList = new List<GameObject>() { _spiner1P, _spiner2P };
@@ -27,16 +24,15 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // XXX‚±‚Ì”»’è‚¾‚Æ‘½’iƒqƒbƒg‚¹‚¸Ao“ü‚è‚ğŒJ‚è•Ô‚·‚±‚Æ‚Å•¡”ƒqƒbƒg‚·‚é‚½‚ß’ˆÓ
         if(collision.gameObject.CompareTag(_tagParamAsset.spinerTag))
         {
-            if (spinerList.Contains(collision.gameObject))
-            {
-                collision.gameObject.GetComponent<Spiner>().AddDamage(_spinerParamAsset.power);
-                
-                collision.gameObject.GetComponent<Chara>().Start_Move();
+            Spiner spiner = collision.gameObject.transform.parent.GetComponent<Spiner>();
 
-                spinerList.Remove(collision.gameObject);
+            // ‘½’iƒqƒbƒg–h~
+            if (!_hitedSpiners.Contains(spiner))
+            {
+                spiner.AddDamage(_spinerParamAsset.power);
+                _hitedSpiners.Add(spiner);
             }
         }
     }

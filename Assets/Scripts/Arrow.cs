@@ -4,7 +4,7 @@ public class Arrow : MonoBehaviour
 {
     [SerializeField]
     private Transform _arrowApex = null;
-    private const float _MAX_SCALE = 1.5f;
+    private const float _MAX_SCALE = 0.75f;
     private const float _AREA_WIDTH = 10f;
     private const float _AREA_HEIGHT = 10f;
     private Vector3 _scale = Vector3.one;
@@ -20,7 +20,6 @@ public class Arrow : MonoBehaviour
         // Å¶InputSystemÇ≈ì¸óÕï˚å¸ÇîΩì]
         float rot = MyMath.GetAim(transform.position, transform.position + dir);
         transform.localRotation = Quaternion.Euler(Vector3.forward * rot);
-
 
         // ï«Ç©ÇÁÇÕÇ›èoÇΩï™ÇæÇØÇ–Ç¡Ç±ÇﬂÇÈ
         Vector3 diff = _arrowApex.position - MyMath.ClampPos(_arrowApex.position, _AREA_WIDTH, _AREA_HEIGHT);
