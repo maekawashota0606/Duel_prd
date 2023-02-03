@@ -23,7 +23,7 @@ public class UIPresenter : MonoBehaviour
     //
     private event System.Action _drawUI;
 
-    public void SetUp(GameDirector gameDirector, Spiner spiner1, Spiner spiner2)
+    public void SetUp(GameDirector gameDirector, Result result, Spiner spiner1, Spiner spiner2)
     {
         // 監視しているものの、結局複数の値が必要
         // カプセル化できず、キレイではない
@@ -51,12 +51,13 @@ public class UIPresenter : MonoBehaviour
         });
 
         //
-        gameDirector.gameStateChanged.Where(x => x == GameState.ended).Subscribe(value =>
+        result.resultTypeChanged.Where(x => x != ResultType.None).Subscribe(value =>
         {
+            Debug.Log(value);
             _finished.enabled = true;
-            if (gameDirector.won1P)
+            if (value == ResultType.Player1)
                 _2P.color = new Color(0, 0, 0);
-            else
+            else if (value == ResultType.Player2)
                 _1P.color = new Color(0, 0, 0);
         });
 

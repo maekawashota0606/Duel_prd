@@ -41,8 +41,8 @@ public class Spiner : MonoBehaviour
         {
             if (value > maxHP)
                 _currentHP.Value = maxHP;
-            else if (value < 0)
-                GameDirector.Instance.OnSpinerDowned(this);
+            else if (value <= 0)
+                GameDirector.Instance.OnSpinerDowned();
         });
 
         currentVelocityChanged.Where(x => x < _spinerParamAsset.minSpeed).Subscribe(value =>

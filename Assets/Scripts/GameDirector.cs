@@ -17,7 +17,9 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     [SerializeField]
     private Spiner _spiner2 = null;
     [SerializeField]
-    UIPresenter _UIPresenter = null;
+    private UIPresenter _UIPresenter = null;
+    [SerializeField]
+    private Result _result = null;
     [SerializeField]
     private PlayerInputManager _playerInputManager = null;
     //
@@ -27,8 +29,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     public GameState _enumGameState { get => _gameState.Value; private set => _gameState.Value = value; }
     public readonly ReactiveProperty<GameState> _gameState = new();
     public IObservable<GameState> gameStateChanged => _gameState;
-    //
-    public bool won1P = false;
+
 
     async void Start()
     {
@@ -45,7 +46,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         // セットアップ
         _spiner1.SetUp();
         _spiner2.SetUp();
-        _UIPresenter.SetUp(this, _spiner1, _spiner2);
+        _UIPresenter.SetUp(this, _result, _spiner1, _spiner2);
 
         // ステート監視/関数登録
         gameStateChanged.Where(x => x == GameState.waiting).Subscribe(value => _tick = OnWaiting);
@@ -139,16 +140,22 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         _gameState.Value = GameState.waiting;
     }
 
-    public void OnSpinerDowned(Spiner spiner)
+    public void OnSpinerDowned()
     {
         // 勝敗判定
-        if (spiner == _spiner1)
-            won1P = false;
-        else
-            won1P = true;
+        ResultType type = ResultType.None;
+        if (_spiner1.currentHP <= 0 && _spiner2.currentHP <= 0)
+            type = ResultType.Draw;
+        else if (_spiner1.currentHP <= 0)
+            type = ResultType.Player2;
+        else if (_spiner2.currentHP <= 0)
+            type = ResultType.Player1;
+
+        _result.GameEnd(type);
 
         _spiner1.OnEnded();
         _spiner2.OnEnded();
+
         _gameState.Value = GameState.ended;
     }
 

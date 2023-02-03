@@ -6,7 +6,7 @@ public enum GameState
     waiting,
     counting,
     fighting,
-    ended,
+    ended
 }
 
 [System.Serializable]
